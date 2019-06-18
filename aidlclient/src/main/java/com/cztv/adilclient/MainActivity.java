@@ -7,11 +7,11 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;
-import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.cztv.IEasyService;
 
@@ -21,9 +21,7 @@ import com.cztv.IEasyService;
  * @date : 2019/1/26 15:08
  */
 public class MainActivity extends AppCompatActivity {
-    private static final String ACTION = "xj.musicserver.easy.IEasyService";
-    private static final String ACTION2 = "com.cztv.IEasyService";
-    private static final String TAG = "MainActivity";
+    private static final String ACTION = "com.cztv.IEasyService";
     Button button;
     private IEasyService mIEasyService;
     ServiceConnection mServiceConnection;
@@ -54,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 if (mIEasyService != null) {
                     try {
                         mIEasyService.connect(" Client connect");
+                        Toast.makeText(MainActivity.this, "mIEasyService.calculate():" + mIEasyService.calculate(), Toast.LENGTH_SHORT).show();
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private void bindService() {
         Intent intent = new Intent();
         intent.setPackage("com.cztv.aidlserver");
-        intent.setAction(ACTION2);
+        intent.setAction(ACTION);
         boolean b = bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
         System.out.println(b);
     }

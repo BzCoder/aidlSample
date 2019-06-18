@@ -20,8 +20,6 @@
 
         <service
             android:name="com.cztv.aidlserver.EasyService"
-            android:enabled="true"
-            android:exported="true"
             android:process=":remote">
             <intent-filter>
                 <action android:name="com.cztv.IEasyService" />

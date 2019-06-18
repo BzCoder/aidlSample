@@ -3,8 +3,13 @@ package com.cztv.aidlserver;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.RemoteException;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.cztv.IEasyService;
+
+import java.util.Random;
 
 /**
  * @author : BaoZhou
@@ -19,14 +24,22 @@ public class EasyService extends Service {
     IEasyService.Stub mIBinder = new IEasyService.Stub() {
         @Override
         public void connect(String mes) {
-            System.out.println( "connect");
-            LogUtils.i(TAG, "connect:   mes =" + mes);
+            Log.e(TAG,"服务器连接成功:"+mes);
         }
 
         @Override
         public void disConnect(String mes) {
-            LogUtils.i(TAG, "disConnect:  mes =" + mes);
+            Log.e(TAG,"服务器断开成功:"+mes);
         }
+
+        @Override
+        public int calculate() {
+            Random random = new Random();
+            Log.e(TAG,"我在计算");
+            return random.nextInt(30);
+        }
+
+
     };
 
     @Override

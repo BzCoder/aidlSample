@@ -9,4 +9,5 @@ interface IEasyService { /**
      */
       void connect(String mes);
       void disConnect(String mes);
+       int calculate();
       }
