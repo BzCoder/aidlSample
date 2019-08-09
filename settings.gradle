@@ -1,1 +1,1 @@
-include ':aidlsever', ':aidlclient', ':foregroundservice'
+include ':aidlsever', ':aidlclient', ':foregroundservice', ':intentservice'
