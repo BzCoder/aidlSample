@@ -31,7 +31,7 @@ public class MonitorService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d("foreground", "onCreate");
-        //如果API在26以上即版本为O则调用startForefround()方法启动服务
+        //如果API在26以上即版本为O则调用startForeground()方法启动服务
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             setForegroundService();
         }
