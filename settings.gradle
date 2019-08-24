@@ -1,1 +1,1 @@
-include ':aidlsever', ':aidlclient', ':foregroundservice', ':intentservice'
+include ':aidlsever', ':aidlclient', ':foregroundservice', ':intentservice', ':rxjava2'
