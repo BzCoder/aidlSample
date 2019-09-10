@@ -1,1 +1,1 @@
-include ':aidlsever', ':aidlclient', ':foregroundservice', ':intentservice', ':rxjava2', ':okhttp', ':dispachtouch'
+include ':aidlsever', ':aidlclient', ':foregroundservice', ':intentservice', ':rxjava2', ':okhttp', ':dispachtouch', ':leak', ':classloader'
