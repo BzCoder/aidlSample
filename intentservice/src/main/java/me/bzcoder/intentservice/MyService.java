@@ -39,7 +39,7 @@ public class MyService extends Service {
             }
         }
         Log.i(TAG, "----耗时任务执行完成---");
-        return START_STICKY;1
+        return START_STICKY;
     }
 
     @Override

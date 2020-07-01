@@ -24,19 +24,31 @@ public class EasyService extends Service {
     IEasyService.Stub mIBinder = new IEasyService.Stub() {
         @Override
         public void connect(String mes) {
-            Log.e(TAG,"服务器连接成功:"+mes);
+            Log.d(TAG, "服务器连接成功:" + mes);
         }
 
         @Override
         public void disConnect(String mes) {
-            Log.e(TAG,"服务器断开成功:"+mes);
+            Log.d(TAG, "服务器断开成功:" + mes);
         }
 
         @Override
         public int calculate() {
             Random random = new Random();
-            Log.e(TAG,"我在计算");
+            Log.d(TAG, "正在计算");
             return random.nextInt(30);
+        }
+
+        @Override
+        public void syncCalculate() throws RemoteException {
+            long startTime = System.currentTimeMillis();
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            long castTime = System.currentTimeMillis() - startTime;
+            Log.d(TAG, "异步进程计算好了" + " 耗时：" + castTime);
         }
 
 

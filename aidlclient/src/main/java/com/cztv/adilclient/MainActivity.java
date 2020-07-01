@@ -23,6 +23,7 @@ import com.cztv.IEasyService;
 public class MainActivity extends AppCompatActivity {
     private static final String ACTION = "com.cztv.IEasyService";
     Button button;
+    Button button2;
     private IEasyService mIEasyService;
     ServiceConnection mServiceConnection;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
+        button2 = findViewById(R.id.button2);
         mServiceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
@@ -56,14 +58,29 @@ public class MainActivity extends AppCompatActivity {
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
-                }
-                else {
+                } else {
                     bindService();
                 }
 
             }
         });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mIEasyService != null) {
+                    try {
+                        mIEasyService.connect(" Client connect");
+                        mIEasyService.syncCalculate();
+                        Toast.makeText(MainActivity.this, "返回了异步处理" , Toast.LENGTH_SHORT).show();
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    bindService();
+                }
 
+            }
+        });
 
     }
 
